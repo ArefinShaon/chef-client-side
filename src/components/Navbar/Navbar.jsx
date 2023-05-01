@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import img from '../../../public/bd-chef.png'
 
 
 const Navbar = () => {
   return (
-    <div className="container">
-      <div className="navbar bg-neutral text-neutral-content">
+    <div>
+      <div className="navbar bg-base-200 text-base-content">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +27,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-neutral text-neutral-content rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-pink-600 text-neutral-content rounded-box w-52"
             >
               <li>
               <Link to="/">Home</Link>
@@ -39,23 +40,24 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-3xl lg:pl-20 ps-8">BD CHEFS</a>
+          <a className="normal-case  lg:pl-20 ps-8 w-64 "><img src={img} alt="" /></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-          <li>
+          <li  className="hover:text-pink-600 font-bold">
               <Link to="/">Home</Link>
               </li>
-              <li>
+              <li  className="hover:text-pink-600 font-bold">
               <Link to="/blog">Blog</Link>
               </li>
-              <li>
+              <li  className="hover:text-pink-600 font-bold">
               <Link to="/login">Log in</Link>
               </li>
           </ul>
         </div>
       </div>
     </div>
+    
   );
 };
 
