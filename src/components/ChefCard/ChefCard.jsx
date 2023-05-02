@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const ChefCard = ({ chefs }) => {
-  const { chefName, chefPicture, yearsOfExperience, numberOfRecipes, likes } =
+  const { chefName, chefPicture, yearsOfExperience, numberOfRecipes, likes ,chefId} =
     chefs;
   return (
     <div>
@@ -29,7 +29,7 @@ const ChefCard = ({ chefs }) => {
                       <p className="text-xl font-bold">Likes from our customers : <span className="text-pink-600"> { likes} Likes</span></p>
                   </div>
           <div >
-          <Link className=" btn bg-pink-600" to='/recipe'>View Recipes <span className="ms-2">
+          <Link className=" btn bg-pink-600" to={`/recipe/${chefId}`}>View Recipes <span className="ms-2">
                 <FontAwesomeIcon icon={faArrowRight} />
               </span></Link>
               

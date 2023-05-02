@@ -14,8 +14,8 @@ const Home = () => {
       {chefInformation.map((chefs) => (
         <ChefCard key={chefs.chefId} chefs={chefs}></ChefCard>
       ))}
-          <Dishes></Dishes>
-          <About></About>
+      <Dishes></Dishes>
+      <About></About>
     </div>
   );
 };

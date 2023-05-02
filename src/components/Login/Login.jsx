@@ -19,6 +19,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        swal("Good job!", "Successfully Log In", "success")
         navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
@@ -37,9 +38,8 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setSuccess(true);
+        swal("Good job!", "Successfully Log In", "success")
         form.reset();
-        // alert('successfully login')
-        swal("Good job!", "Successfully Login!", "success");
         navigate(from, { replace: true });
       })
       .catch(error => {
@@ -84,6 +84,7 @@ const Login = () => {
               />
               <label className="label text-purple-700">
                 {success && <p>Successfully login to the account</p>}
+                {error && <p className="text-red-500">{error}</p>}
               </label>
             </div>
             <div className="form-control mt-4">

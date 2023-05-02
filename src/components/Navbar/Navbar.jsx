@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import img from "../../../public/bd-chef.png";
 import { AuthContext } from "../contexts/AuthProvide";
+import { FaUser } from "react-icons/fa";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
- console.log(user);
   const handleLogout = () => {
     logOut()
       .then(() => {})
@@ -73,14 +73,17 @@ const Navbar = () => {
           {user ? (
             <>
               <span className="tooltip">
-                <img
-                  className="rounded-full w-12 mx-2"
-                  src={user.photoURL}
-                  alt=""
-                  title={user.displayName}
-                />
+                {user.photoURL ? (
+                  <img
+                    className="rounded-full w-12 mx-2"
+                    src={user.photoURL}
+                    alt=""
+                    title={user.displayName}
+                  />
+                ) : (
+                  <FaUser className="rounded-full w-12 mx-2" />
+                )}
               </span>
-
               <button
                 onClick={handleLogout}
                 className="btn btn-sm bg-pink-600 "

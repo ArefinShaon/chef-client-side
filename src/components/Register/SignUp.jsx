@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvide";
+import swal from "sweetalert";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -39,6 +40,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         setSuccess(true);
+        swal("Good job!", "Successfully create an account", "success")
         form.reset();
         navigate("/");
       })
