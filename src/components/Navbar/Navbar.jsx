@@ -38,6 +38,9 @@ const Navbar = () => {
               <li>
               <Link to="/about">About Us</Link>
               </li>
+              <li>
+              <Link to="/signup">Register</Link>
+              </li>
             </ul>
           </div>
           <a className="normal-case  lg:pl-20 ps-8 w-64 "><img src={img} alt="" /></a>
@@ -52,6 +55,9 @@ const Navbar = () => {
               </li>
               <li  className="hover:text-pink-600 font-bold">
               <Link to="/about">About Us</Link>
+              </li>
+              <li  className="hover:text-pink-600 font-bold">
+              <Link to="/signup">Register</Link>
               </li>
           </ul>
         </div>
