@@ -36,7 +36,7 @@ const Navbar = () => {
               <Link to="/blog">Blog</Link>
               </li>
               <li>
-              <Link to="/login">Log in</Link>
+              <Link to="/about">About Us</Link>
               </li>
             </ul>
           </div>
@@ -51,9 +51,12 @@ const Navbar = () => {
               <Link to="/blog">Blog</Link>
               </li>
               <li  className="hover:text-pink-600 font-bold">
-              <Link to="/login">Log in</Link>
+              <Link to="/about">About Us</Link>
               </li>
           </ul>
+        </div>
+        <div className="navbar-end font-bold text-pink-600 pr-24">
+        <Link to="/login">Log in</Link>
         </div>
       </div>
     </div>
