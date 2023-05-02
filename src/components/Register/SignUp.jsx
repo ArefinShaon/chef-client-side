@@ -14,9 +14,10 @@ const SignUp = () => {
     setSuccess(false);
     const form = event.target;
     const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(name, photo, email, password);
 
     // validate password
     if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
@@ -64,6 +65,17 @@ const SignUp = () => {
               type="text"
               placeholder="Name"
               className="input input-bordered border-zinc-900 bg-white"
+              required
+            />
+            <label className="label">
+              <span className="label-text text-black">Your Photo</span>
+            </label>
+            <input
+              name="photo"
+              type="text"
+              placeholder="Photo url"
+              className="input input-bordered border-zinc-900 bg-white"
+              required
             />
             <label className="label">
               <span className="label-text text-black">Email Address</span>
@@ -94,7 +106,12 @@ const SignUp = () => {
             </label>
           </div>
           <div className="flex justify-start">
-            <input type="radio" name="radio-7" className="radio radio-info" />
+            <input
+              type="radio"
+              name="radio-7"
+              className="radio radio-info"
+              required
+            />
             <p>Accept terms and condition</p>
           </div>
           <p className="text-error">{passwordError}</p>

@@ -11,6 +11,7 @@ import Recipes from "./components/Recipes/Recipes.jsx";
 import AboutInfo from "./components/About infomation/AboutInfo.jsx";
 import AuthProvide from "./components/contexts/AuthProvide.jsx";
 import SignUp from "./components/Register/SignUp.jsx";
+import PrivateRoutes from "./PrivateRautes/PrivateRautes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipe",
-        element: <Recipes></Recipes>
+        element: <PrivateRoutes><Recipes></Recipes></PrivateRoutes>
       },
       {
         path: "/about",

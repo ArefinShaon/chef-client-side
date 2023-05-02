@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import img from '../../../public/bd-chef.png'
-
+import { AuthContext } from "../contexts/AuthProvide";
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => { })
+    .catch(error=> console.log(error))
+  }
   return (
     <div>
       <div className="navbar bg-base-200 text-base-content">
@@ -43,7 +51,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="normal-case  lg:pl-20 ps-8 w-64 "><img src={img} alt="" /></a>
+          <a className="normal-case  lg:pl-20 w-64 pb-4"><img src={img} alt="" /></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -61,8 +69,13 @@ const Navbar = () => {
               </li>
           </ul>
         </div>
-        <div className="navbar-end font-bold text-pink-600 pr-24">
-        <Link to="/login">Log in</Link>
+        <div className="navbar-end font-bold text-pink-600 ">
+          {
+            user ? <>
+              <span> <img className="rounded-full w-12 mx-2" src={user.photoURL} alt="" /> </span>
+              <button onClick={handleLogout} className="btn btn-sm bg-pink-600 ">Sign Out</button>
+            </>:<Link to="/login">Log in</Link>
+        }
         </div>
       </div>
     </div>
