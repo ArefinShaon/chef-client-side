@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import img from '../../../public/bd-chef.png'
+import img from "../../../public/bd-chef.png";
 import { AuthContext } from "../contexts/AuthProvide";
-
 const Navbar = () => {
-
   const { user, logOut } = useContext(AuthContext);
-
+ console.log(user);
   const handleLogout = () => {
     logOut()
-      .then(() => { })
-    .catch(error=> console.log(error))
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="navbar bg-base-200 text-base-content">
@@ -38,48 +36,64 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-pink-600 text-neutral-content rounded-box w-52"
             >
               <li>
-              <Link to="/">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-              <Link to="/blog">Blog</Link>
+                <Link to="/blog">Blog</Link>
               </li>
               <li>
-              <Link to="/about">About Us</Link>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-              <Link to="/signup">Register</Link>
+                <Link to="/signup">Register</Link>
               </li>
             </ul>
           </div>
-          <a className="normal-case  lg:pl-20 w-64 pb-4"><img src={img} alt="" /></a>
+          <a className="normal-case  lg:pl-20 w-64 pb-4">
+            <img src={img} alt="" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-          <li  className="hover:text-pink-600 font-bold">
+            <li className="hover:text-pink-600 font-bold">
               <Link to="/">Home</Link>
-              </li>
-              <li  className="hover:text-pink-600 font-bold">
+            </li>
+            <li className="hover:text-pink-600 font-bold">
               <Link to="/blog">Blog</Link>
-              </li>
-              <li  className="hover:text-pink-600 font-bold">
+            </li>
+            <li className="hover:text-pink-600 font-bold">
               <Link to="/about">About Us</Link>
-              </li>
-              <li  className="hover:text-pink-600 font-bold">
+            </li>
+            <li className="hover:text-pink-600 font-bold">
               <Link to="/signup">Register</Link>
-              </li>
+            </li>
           </ul>
         </div>
         <div className="navbar-end font-bold text-pink-600 ">
-          {
-            user ? <>
-              <span> <img className="rounded-full w-12 mx-2" src={user.photoURL} alt="" /> </span>
-              <button onClick={handleLogout} className="btn btn-sm bg-pink-600 ">Sign Out</button>
-            </>:<Link to="/login">Log in</Link>
-        }
+          {user ? (
+            <>
+              <span className="tooltip">
+                <img
+                  className="rounded-full w-12 mx-2"
+                  src={user.photoURL}
+                  alt=""
+                  title={user.displayName}
+                />
+              </span>
+
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm bg-pink-600 "
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <Link to="/login">Log in</Link>
+          )}
         </div>
       </div>
     </div>
-    
   );
 };
 

@@ -115,7 +115,15 @@ const SignUp = () => {
             <p>Accept terms and condition</p>
           </div>
           <p className="text-error">{passwordError}</p>
-          {success && <p className="text-black">User Created Successfully.</p>}
+          {success && (
+            <div className="toast toast-end toast-middle">
+              <div className="alert alert-success">
+                <div>
+                  <span>User Created successfully.</span>
+                </div>
+              </div>
+            </div>
+          )}
           <div className="form-control mt-6">
             <input
               type="submit"

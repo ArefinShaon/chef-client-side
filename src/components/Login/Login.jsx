@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaArrowRight, FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../contexts/AuthProvide";
+import swal from 'sweetalert';
 
 const Login = () => {
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
   const { signIn, providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const Login = () => {
       .catch((error) => console.error(error));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setSuccess(false);
 
@@ -31,15 +33,20 @@ const Login = () => {
     const password = form.password.value;
 
     signIn(email, password)
-      .then((result) => {
+      .then(result => {
         const user = result.user;
         console.log(user);
         setSuccess(true);
         form.reset();
-        alert("successfully login");
+        // alert('successfully login')
+        swal("Good job!", "Successfully Login!", "success");
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch(error => {
+        console.error(error)
+        setError(error.message);
+     
+      })
   };
 
   return (
