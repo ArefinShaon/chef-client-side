@@ -12,10 +12,12 @@ const Recipes = () => {
     recipes,
   } = recipe;
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(recipes.map(() => false));
 
-  const handleFavoriteClick = () => {
-    setIsFavorite(true);
+  const handleFavoriteClick = (index) => {
+    const updatedIsFavorite = [...isFavorite];
+    updatedIsFavorite[index] = true;
+    setIsFavorite(updatedIsFavorite);
     swal("Success", "Added to favorites", "success");
   };
 
@@ -24,7 +26,7 @@ const Recipes = () => {
       <RecipeHeader recipe={recipe}></RecipeHeader>
       <div className="lg:m-14 mb-12 ">
         <ul className="lg:flex justify-between">
-          {recipes.map((recipe) => (
+          {recipes.map((recipe, index) => (
             <li key={recipe.id}>
               <div className="card w-full lg:w-96 h-full mx-auto bg-base-200 shadow-xl mt-6">
                 <div className="card-body">
@@ -56,10 +58,10 @@ const Recipes = () => {
                     </p>
                     <button
                       className="btn bg-pink-600 mt-6"
-                      onClick={handleFavoriteClick}
-                      disabled={isFavorite}
+                      onClick={() => handleFavoriteClick(index)}
+                      disabled={isFavorite[index]}
                     >
-                      {isFavorite ? "Favorited" : "Favorite"}
+                      {isFavorite[index] ? "Favorited" : "Favorite"}
                     </button>
                   </div>
                 </div>
