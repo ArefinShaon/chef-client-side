@@ -18,7 +18,6 @@ const SignUp = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
 
     // validate password
     if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
@@ -35,7 +34,7 @@ const SignUp = () => {
     }
     setPasswordError("");
 
-    createUser(email, password)
+    createUser(email, password,name,photo)
       .then((result) => {
         const user = result.user;
         console.log(user);

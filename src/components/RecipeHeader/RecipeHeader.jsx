@@ -1,5 +1,6 @@
 import React from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 const RecipeHeader = ({ recipe }) => {
   const {
     chefName,
@@ -21,11 +22,11 @@ const RecipeHeader = ({ recipe }) => {
             <h1 className="text-4xl text-pink-600 font-bold">{chefName}</h1>
             <p className="py-6">{bio}</p>
             <div>
-              <div>
-                <p>Experience for {yearsOfExperience} years</p>
-                <p> Number of recipes {numberOfRecipes}</p>
+              <div className="text-xl mb-6 ">
+                <p className="text-slate-500 btn btn-outline hover:bg-pink-600 mr-2">Experience for {yearsOfExperience} years</p>
+                <p className="text-slate-500 btn btn-outline hover:bg-pink-600"> Number of recipes: {numberOfRecipes}</p>
               </div>
-              <p className="text-pink-600">Likes : {likes}</p>
+              <p className="text-pink-600 font-bold">Likes : {likes}  <FontAwesomeIcon icon={faThumbsUp} /></p>
             </div>
           </div>
         </div>

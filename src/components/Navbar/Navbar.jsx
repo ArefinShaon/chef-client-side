@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import img from "../../../public/bd-chef.png";
 import { AuthContext } from "../contexts/AuthProvide";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaHandPointRight } from "react-icons/fa";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
   const handleLogout = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
     <div>
       <div className="navbar bg-base-200 text-base-content">
@@ -36,16 +43,30 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-pink-600 text-neutral-content rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className={isActive("/") ? "active" : ""}>
+                  Home {isActive("/") && <FaHandPointRight />}
+                </Link>
               </li>
               <li>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blog" className={isActive("/blog") ? "active" : ""}>
+                  Blog {isActive("/blog") && <FaHandPointRight />}
+                </Link>
               </li>
               <li>
-                <Link to="/about">About Us</Link>
+                <Link
+                  to="/about"
+                  className={isActive("/about") ? "active" : ""}
+                >
+                  About Us {isActive("/about") && <FaHandPointRight />}
+                </Link>
               </li>
               <li>
-                <Link to="/signup">Register</Link>
+                <Link
+                  to="/signup"
+                  className={isActive("/signup") ? "active" : ""}
+                >
+                  Register {isActive("/signup") && <FaHandPointRight />}
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,17 +76,39 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li className="hover:text-pink-600 font-bold">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="hover:text-pink-600 font-bold">
-              <Link to="/blog">Blog</Link>
-            </li>
-            <li className="hover:text-pink-600 font-bold">
-              <Link to="/about">About Us</Link>
-            </li>
-            <li className="hover:text-pink-600 font-bold">
-              <Link to="/signup">Register</Link>
+            <li>
+              <li className="font-bold">
+                <Link to="/" className={isActive("/") ? " bg-pink-600" : ""}>
+                  {isActive("/") && <FaHandPointRight />} Home
+                </Link>
+              </li>
+              <li className=" font-bold">
+                <Link
+                  to="/blog"
+                  className={isActive("/blog") ? " bg-pink-600" : ""}
+                >
+                  {isActive("/blog") && <FaHandPointRight />}
+                  Blog
+                </Link>
+              </li>
+              <li className=" font-bold">
+                <Link
+                  to="/about"
+                  className={isActive("/about") ? " bg-pink-600" : ""}
+                >
+                  {isActive("/about") && <FaHandPointRight />}
+                  About us
+                </Link>
+              </li>
+              <li className=" font-bold">
+                <Link
+                  to="/signup"
+                  className={isActive("/signup") ? " bg-pink-600" : ""}
+                >
+                  {isActive("/signup") && <FaHandPointRight />}
+                  Register
+                </Link>
+              </li>
             </li>
           </ul>
         </div>
@@ -92,7 +135,9 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <Link to="/login">Log in</Link>
+            <Link to="/login" className={isActive("/login") ? "active" : ""}>
+              {isActive("/login") && <FaHandPointRight />}Log in
+            </Link>
           )}
         </div>
       </div>

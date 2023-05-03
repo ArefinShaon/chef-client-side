@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight,faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import LazyLoad from "react-lazy-load";
 
@@ -29,7 +29,7 @@ const ChefCard = ({ chefs }) => {
             </p>
                   </div>
                   <div className="mt-6 mb-6">
-                      <p className="text-xl font-bold">Likes from our customers : <span className="text-pink-600"> { likes} Likes</span></p>
+                      <p className="text-xl font-bold">Likes from our customers : <span className="text-pink-600"> { likes} Likes <FontAwesomeIcon icon={faThumbsUp} /></span></p>
                   </div>
           <div >
           <Link className=" btn bg-pink-600" to={`/recipe/${chefId}`}>View Recipes <span className="ms-2">
