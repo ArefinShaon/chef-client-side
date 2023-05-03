@@ -1,21 +1,33 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaArrowRight, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../contexts/AuthProvide";
 import swal from 'sweetalert';
 
 const Login = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const { signIn, providerLogin } = useContext(AuthContext);
+  const { signIn, providerLogin,gitHubProviderLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        swal("Good job!", "Successfully Log In", "success")
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleGitHubSignIn = () => {
+    gitHubProviderLogin(gitHubProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -106,7 +118,7 @@ const Login = () => {
           </div>
           <div className="mb-4 flex justify-center  mx-8 mt-2">
             <button
-              onClick={handleGoogleSignIn}
+              onClick={handleGitHubSignIn}
               className="btn btn-outline  text-bold w-full mx-4"
             >
               <p className="px-2">

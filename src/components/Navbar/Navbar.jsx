@@ -6,6 +6,7 @@ import { FaUser, FaHandPointRight } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const location = useLocation();
   const handleLogout = () => {
     logOut()
@@ -76,7 +77,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
+            
               <li className="font-bold">
                 <Link to="/" className={isActive("/") ? " bg-pink-600" : ""}>
                   {isActive("/") && <FaHandPointRight />} Home
@@ -109,7 +110,7 @@ const Navbar = () => {
                   Register
                 </Link>
               </li>
-            </li>
+            
           </ul>
         </div>
         <div className="navbar-end font-bold text-pink-600 ">

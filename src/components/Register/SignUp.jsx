@@ -34,14 +34,14 @@ const SignUp = () => {
     }
     setPasswordError("");
 
-    createUser(email, password,name,photo)
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         setSuccess(true);
         swal("Good job!", "Successfully create an account", "success")
         form.reset();
-        navigate("/");
+        navigate("/login");
       })
 
       .catch((error) => {
