@@ -20,16 +20,16 @@ const ChefCard = ({ chefs }) => {
             {chefName}
           </h2>
           <div className="lg:flex items-center  ">
-            <h2 className="text-xl m-4 text-slate-500 btn btn-outline hover:bg-pink-600">
+            <h2 className="lg:text-xl m-4 text-slate-500 btn btn-outline hover:bg-pink-600">
               {" "}
               Experience for : {yearsOfExperience} years
             </h2>
-            <p className="text-xl m-4 text-slate-500 btn btn-outline hover:bg-pink-600">
+            <p className="lg:text-xl m-4 text-slate-500 btn btn-outline hover:bg-pink-600">
               Number of recipes : {numberOfRecipes}
             </p>
                   </div>
                   <div className="mt-6 mb-6">
-                      <p className="text-xl font-bold">Likes from our customers : <span className="text-pink-600"> { likes} Likes <FontAwesomeIcon icon={faThumbsUp} /></span></p>
+                      <p className="lg:text-xl font-bold">Likes from our customers : <span className="text-pink-600"> { likes} Likes <FontAwesomeIcon icon={faThumbsUp} /></span></p>
                   </div>
           <div >
           <Link className=" btn bg-pink-600" to={`/recipe/${chefId}`}>View Recipes <span className="ms-2">

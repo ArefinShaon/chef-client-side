@@ -6,7 +6,7 @@ import { FaUser, FaHandPointRight } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  
   const location = useLocation();
   const handleLogout = () => {
     logOut()
