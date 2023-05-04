@@ -5,6 +5,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../contexts/AuthProvide";
 import swal from 'sweetalert';
 
+// For log in section
 const Login = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -15,6 +16,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  // For google log in
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -26,6 +28,7 @@ const Login = () => {
       .catch((error) => console.error(error));
   };
 
+  // for github log in
   const handleGitHubSignIn = () => {
     gitHubProviderLogin(gitHubProvider)
       .then((result) => {
@@ -37,6 +40,7 @@ const Login = () => {
       .catch((error) => console.error(error));
   };
 
+  // Submit on form 
   const handleSubmit = event => {
     event.preventDefault();
     setSuccess(false);
